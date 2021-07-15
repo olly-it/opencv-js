@@ -1,1 +1,29 @@
-<html><body>hello guy</body></html>
+<!DOCTYPE html>
+
+<head>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+
+    video {
+      border: 1px solid black;
+    }
+
+    .err {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <select id="select"></select>
+  <button id="start_button">start</button>
+  <button id="stop_button">stop</button>
+  <div id="contentarea">
+    <video id="video">Your browser does not support the video tag.</video>
+    <canvas id="canvasOutput"></canvas>
+  </div>
+  <script async src="my_opencv_build_with_aruco.js" id="opencvjs"></script>
+  <script src="aruco_substitution.js"></script>
+</body>
