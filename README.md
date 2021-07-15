@@ -1,1 +1,2 @@
 # opencv-js
+with aruco
