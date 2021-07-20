@@ -8,6 +8,7 @@
 
     video {
       border: 1px solid black;
+      display: none;
     }
 
     .err {
@@ -17,13 +18,23 @@
 </head>
 
 <body>
-  <select id="select"></select>
-  <button id="start_button">start</button>
-  <button id="stop_button">stop</button>
-  <div id="contentarea">
-    <video id="video">Your browser does not support the video tag.</video>
-    <canvas id="canvasOutput"></canvas>
+  <div id="brandChoice">
+    <form id="brandsForm">
+      Preferisci la <input type="radio" name="brands" value="cocaLogo" id="cocaRadio" checked>Cocacola o la <input type="radio" name="brands" value="pepsiLogo" id="pepsiRadio">Pepsi?<br>
+      <button type="button" onclick="start()">Salva</button>
+    </form>
   </div>
+  <div id="streaming" hidden>
+    <select id="select" hidden></select>
+    <button id="start_button">start</button>
+    <button id="stop_button">stop</button>
+    <div id="contentarea">
+      <video id="video" hidden>Your browser does not support the video tag.</video>
+      <canvas id="canvasInput" hidden></canvas>
+      <canvas id="canvasOutput"></canvas>
+    </div>
+  </div>
+
   <script async src="my_opencv_build_with_aruco.js" id="opencvjs"></script>
   <script src="aruco_substitution.js"></script>
 </body>
