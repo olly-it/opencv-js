@@ -14,12 +14,8 @@ const video = document.getElementById("video");
 
 const brandChoice = document.getElementById("brandChoice");
 const streamingDiv = document.getElementById("streaming");
-const brandsImages = {
-    cocaLogo: "https://static.vecteezy.com/ti/vettori-gratis/t1/64050-logo-in-bianco-e-nero-di-coca-cola-gratuito-vettoriale.jpg",
-    pepsiLogo: "https://static.vecteezy.com/system/resources/previews/000/064/192/non_2x/vector-pepsi.jpg"
-}
-const cocaRadio = document.getElementById("cocaRadio");
-const pepsiRadio = document.getElementById("pepsiRadio");
+const firstRadio = document.getElementById("firstRadio");
+const secondRadio = document.getElementById("secondRadio");
 
 const FPS = 60;
 
@@ -40,10 +36,10 @@ navigator.mediaDevices.enumerateDevices()
     });
 })
 function start() {
-    if (cocaRadio.checked) {
-        loadImageToCanvas("https://static.vecteezy.com/ti/vettori-gratis/t1/64050-logo-in-bianco-e-nero-di-coca-cola-gratuito-vettoriale.jpg", "canvasInput");
+    if (firstRadio.checked) {
+        loadImageToCanvas("https://olly-it.github.io/opencv-js/marker-ar-js/me_enginius_icon.jpg", "canvasInput");
     } else {
-        loadImageToCanvas("https://static.vecteezy.com/system/resources/previews/000/064/192/non_2x/vector-pepsi.jpg", "canvasInput");
+        loadImageToCanvas("https://olly-it.github.io/opencv-js/marker-ar-js/me2.jpg", "canvasInput");
     }
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false })
     .then(function (s) {
@@ -172,7 +168,7 @@ function playVideo() {
                         let homographyMatrix = cv.findHomography(cam_points, marker_points, cv.RANSAC, 3, findHomographyMask);
                         let image_B_final_result = new cv.Mat();
                         cv.warpPerspective(logoImage, image_B_final_result, homographyMatrix, RgbImage.size());
-                        cv.cvtColor(image_B_final_result, image_B_final_result, cv.COLOR_BGRA2RGB);
+                        cv.cvtColor(image_B_final_result, image_B_final_result, cv.COLOR_RGBA2RGB);
                         cv.fillConvexPoly(RgbImage, marker_points, new cv.Scalar(0));
                         cv.add(RgbImage, image_B_final_result, RgbImage);
                         marker_points.delete();
